@@ -22,19 +22,19 @@ def is_valid_email(email):
 
 def run():
     attendance_data = {
-        'student_id': [1, 1, 1, 1, 1, 2, 2, 2, 3, 3],
+        'student_id': [101, 101, 101, 101, 101, 102, 102, 102, 103, 103],
         'attendance_date': pd.to_datetime([
-            '2025-03-20', '2025-03-21', '2025-03-22', '2025-03-23', '2025-03-24',
-            '2025-03-21', '2025-03-22', '2025-03-23', '2025-03-22', '2025-03-23'
+            '2025-03-18', '2025-03-19', '2025-03-20', '2025-03-21', '2025-03-22',
+            '2025-03-19', '2025-03-20', '2025-03-21', '2025-03-20', '2025-03-21'
         ]),
         'status': ['Present', 'Absent', 'Absent', 'Absent', 'Present',
                    'Absent', 'Absent', 'Absent', 'Present', 'Absent']
     }
 
     students_data = {
-        'student_id': [1, 2, 3],
-        'student_name': ['Alice', 'Bob', 'Charlie'],
-        'parent_email': ['alice_parent@gmail.com', 'bob123@domain.com', 'charlie@domaincom']
+        'student_id': [101, 102, 103],
+        'student_name': ['Aarav Sharma', 'Neha Verma', 'Rohan Iyer'],
+        'parent_email': ['aarav_parent@gmail.com', 'neha123@domain.com', 'rohan@domaincom']
     }
 
     attendance_df = pd.DataFrame(attendance_data)
