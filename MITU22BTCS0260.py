@@ -20,11 +20,11 @@ def find_absent_streaks(attendance_df):
                 streak_end = row['attendance_date']
                 total_absent += 1
             else:
-                if total_absent > 3:
+                if total_absent >= 3:  # Ensuring streaks of 3 or more days
                     absence_streaks.append([student, streak_start, streak_end, total_absent])
                 streak_start, streak_end, total_absent = None, None, 0
         
-        if total_absent > 3:
+        if total_absent >= 3:
             absence_streaks.append([student, streak_start, streak_end, total_absent])
     
     return pd.DataFrame(absence_streaks, columns=['student_id', 'absence_start_date', 'absence_end_date', 'total_absent_days'])
@@ -49,7 +49,7 @@ def process_attendance_data(file_path):
     def generate_message(row):
         if row['valid_email']:
             return (f"Dear Parent, your child {row['student_name']} was absent from "
-                    f"{row['absence_start_date'].date()} to {row['absence_end_date'].date()} "
+                    f"{row['absence_start_date'].strftime('%d-%m-%Y')} to {row['absence_end_date'].strftime('%d-%m-%Y')} "
                     f"for {row['total_absent_days']} days. Please ensure their attendance improves.")
         return None
     
@@ -59,4 +59,4 @@ def process_attendance_data(file_path):
 
 file_path = "data - sample.xlsx"
 output_df = process_attendance_data(file_path)
-print(output_df.head())
+print(output_df)
